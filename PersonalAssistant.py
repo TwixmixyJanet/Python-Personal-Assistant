@@ -1,18 +1,13 @@
 # Give the class a name
 class PersonalAssistant:
   # Add an __init__ function here
-  def __init__(self, todos, birthdays):
+  def __init__(self, todos, birthdays, contacts):
 
     self.todos = todos
     self.birthdays = birthdays
+    self.contacts = contacts
 
-    # Complete the get_contact function code
-  def get_contact(self, name):
-    if name in self.contacts:
-      return self.contacts[name]
-    else:
-      return "That contact does not exist."
-
+# TO-DO LIST
   def add_todo(self,new_item):
     self.todos.append(new_item)
 
@@ -29,6 +24,7 @@ class PersonalAssistant:
   def get_todos(self):
     return self.todos
 
+# BIRTHDAY LIST
   def get_birthdays(self):
     return self.birthdays
 
@@ -52,14 +48,26 @@ class PersonalAssistant:
     else:
       return "That birthday is not in the list!"
 
+# CONTACT LIST
+  def get_contact(self, name):
+    if name in self.contacts:
+      return f"{name} is a {self.contacts[name]}."
+    else:
+      return "Can't find contact for this person."
 
-      
-#    if name == "Janet":
-#      return "Janet's birthday is 09/24/1985"
-#    elif name == "Rowan":
-#      return "Rowan's birthday is 08/08/1987"
-#    elif name == "Winona":
-#      return "Winona's birthday is 10/10/2020"
-#    else:
-#      return "That birthday is not in the system"
+  def add_contact(self, name, position):
+    if name in self.contacts:
+      return f"You already have a contact for {name}"
+    else:
+      self.contacts[name] = position
+      return f"{name}'s contact has been added."
 
+  def remove_contact(self, name):
+    if name in self.contacts:
+      self.contacts.pop(name)
+      return f"{name}'s contact has been removed."
+    else:
+      return "That contact is not in the list!"
+
+  def get_contacts(self):
+    return self.contacts
